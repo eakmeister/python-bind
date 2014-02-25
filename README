@@ -1,0 +1,20 @@
+This module adds the 'bind' method to all function objects, as inspired by this
+blog post:
+
+    http://alon.horev.net/blog/2013/10/20/argument-binding-in-python
+
+This is meant as a pythonic replacement for functools.partial, and is used as
+follows:
+
+    >>> import bind                     
+    >>> def subtract(a, b):             
+    ...     return a - b                
+    ...                                 
+    >>> subtract5 = subtract.bind(b = 5)
+    >>> subtract5(20)                   
+    15                                  
+
+This uses plenty of ctypes dickery, as provided by the forbiddenfruit module,
+so use at your own risk. This also means it will only work with cpython, and is
+basically a gigantic hack.
+
